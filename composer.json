@@ -1,0 +1,22 @@
+{
+    "name": "ijanki/doctrine-mysql-dbal-extensions",
+    "type": "library",
+    "description": "Doctrine dbal extensions",
+    "keywords": ["doctrine", "dbal", "database"],
+    "homepage": "https://github.com/iJanki/doctrine-mysql-dbal-extensions",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniele Cesarini",
+            "email": "daniele.cesarini@gmail.com",
+            "homepage": "http://www.danielecesarini.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "doctrine/dbal": "^2.6"
+    },
+    "autoload": {
+        "psr-4": { "Ijanki\\DBAL\\": "" }
+    }
+}
