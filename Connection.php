@@ -8,6 +8,8 @@ class Connection extends \Doctrine\DBAL\Connection
      * Insert using mysql ON DUPLICATE KEY UPDATE.
      * @link http://dev.mysql.com/doc/refman/5.7/en/insert-on-duplicate.html
      *
+     * INSPIRED BY https://github.com/yadakhov/insert-on-duplicate-key
+     *
      * Example:  $data = [
      *     ['id' => 1, 'name' => 'John'],
      *     ['id' => 2, 'name' => 'Mike'],
@@ -34,9 +36,21 @@ class Connection extends \Doctrine\DBAL\Connection
 
         $stmt = $this->prepare($sql);
 
-        foreach ($data as $r) {
-            $stmt->execute(array_values($r));
-        }
+        $data = $this->inLineArray($data);
+
+        return $stmt->execute($data);
+    }
+
+    /**
+     * Inline a multiple dimensions array.
+     *
+     * @param $data
+     *
+     * @return array
+     */
+    protected static function inLineArray(array $data)
+    {
+        return call_user_func_array('array_merge', array_map('array_values', $data));
     }
 
     private function buildInsertOnDuplicateSql($tableExpression, array $data, array $updateColumns = null)
