@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "doctrine/dbal": "^2.6"
+        "doctrine/dbal": "^2.5"
     },
     "autoload": {
         "psr-4": { "Ijanki\\DBAL\\": "" }
