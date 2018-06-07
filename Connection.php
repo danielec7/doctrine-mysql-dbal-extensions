@@ -57,7 +57,7 @@ class Connection extends \Doctrine\DBAL\Connection
     {
         $first = $this->getFirstRow($data);
 
-        $columns = '`' . implode('`,`', $this->getColumns()) . '`';
+        $columns = '`' . implode('`,`', $this->getColumns($first)) . '`';
 
         $sql  = 'INSERT INTO `' . $tableExpression . '`(' . $columns . ') VALUES ';
         $sql .=  $this->buildQuestionMarks($data);
